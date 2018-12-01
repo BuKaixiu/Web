@@ -89,13 +89,98 @@ HTTP 协议版本+状态码+空格+状态描述
 
 服务器想告诉客户端的一些额外信息，常见的有一下：
 
-| 键     | 值         |
-| ------ | ---------- |
-| Data   | 响应时间   |
-| Server | 服务器信息 |
-|        |            |
-|        |            |
-|        |            |
-|        |            |
-|        |            |
+| 键             | 值               |
+| -------------- | ---------------- |
+| Data           | 响应时间         |
+| Server         | 服务器信息       |
+| Content-Type   | 响应体的内容类型 |
+| Content-Length | 响应的内容大小   |
+| Set-Cookle     | 让客户端         |
 
+如果需要在程序中设置自定义响应头（不是预设的），建议用x-<Property-Name>规则
+
+响应体
+
+这次请求服务器想要返回给客户端的数据正文，一般返回的都是HTML，也可以返回JavaScript或者css（需要修改响应头中的响应数据类型）。
+
+#### 2.1.3 应用场景
+
++ 设置响应文件类型
+  + header('Content-Type： text/css');
+
+  + 常见的HTTP MIME type: `text/css` `text/html ` `text/plan` `applcation/javascript`
+
+    html 代码
+
+    ```html
+    <!DOCTYPE>
+    <html>
+        <head len="en">
+            <meta charset="UTF-8">
+            <link rel="stylesheet" href="style.php">
+            <link rel="stylesheet" href="script.php">
+        </head>
+    </html>
+    ```
+
+    php+css 代码
+
+    ```php
+    <?php
+    	header('Content-Type: text/css; charset="utf-8"');
+    ?>
+    body {
+    	background-color: hotpink;
+    }
+    ```
+
+    php+javascript
+
+    ```php
+    <?php
+    	header("Content-Type: applcation/javascript");
+    ?>
+    document.write("Hello World");
+    ```
+
++ 重定向（跳转到其他网页）
+
+  + header(’Location: https://www.baidu.com‘);
+
++ 下载文件
+
+  ```php
+  // 让文件下载
+  header('Content-Type: application/octet-stream');
+  // 设置默认下载文件名
+  header('Content-Disposition: attachment; filename=demo.txt');
+  ```
+
++ 图片防盗链
+
+  + 通过判断请求来源`Referer`是否为本网站从而区分是否是合法请求
+
+
+
+### 2.2. 请求方式
+
+根据 HTTP标准，HTTP 请求可以使用多种请求方法。
+
+HTTP1.0定义了三种请求方法：`GET` `POST` `HEAD`
+
+HTTP1.1新增了五种请求方法：`options` `put` `delete` `trace` `connect`
+
+| 序号 | 方法    | 描述                                                         |
+| ---- | ------- | ------------------------------------------------------------ |
+| 1    | GET     | 请求指定页面的信息，并返回实体主体                           |
+| 2    | HEAD    | 类型与GET请求，只不过返回的响应中没有具体的内容，用于获取报头 |
+| 3    | POST    | 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。 |
+| 4    | PUT     | 从客户端向服务器传送的数据取代指定的文档的内容。             |
+| 5    | DELETE  | 请求服务器删除指定的页面                                     |
+| 6    | CONNECT | HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器      |
+| 7    | OPTIONS | 允许客户端查看服务器的性能                                   |
+| 8    | TRACE   | 回显服务器收到的请求，主要用于测试和诊断                     |
+
+
+
+>http://www.runoob.com/http/http-methods.html
