@@ -12,7 +12,7 @@ HTTP（Hyper Text Transfer Protocol，超文本传输协议）最早就是计算
 
 主动被动问题
 
-![](Web/img/HTTP传输.png)
+![](https://github.com/BuKaixiu/Web/blob/master/img/HTTP%E4%BC%A0%E8%BE%93.png)
 
 随着时代的发展，技术的变迁，这种协议现在广泛的应用在各种领域，也不仅仅局限于计算机与计算机之间，手机，电视等各种智能设备很多时候都在使用这个协议通讯，所以一般现在称 **HTTP 为端与端之间的通讯协议**。
 
@@ -47,9 +47,9 @@ Web 属于B/S 架构的应用软件，在 B/S 架构中，浏览器与服务器�
 
 #### 2.1.1. 请求报文
 
-![ ](Web\img\请求报文.png)
+![ ](https://github.com/BuKaixiu/Web/blob/master/img/请求报文.png)
 
-![](Web\img\请求报文格式.png)
+![](https://github.com/BuKaixiu/Web/blob/master/img/请求报文格式.png)
 
 请求行
 
@@ -77,7 +77,7 @@ Web 属于B/S 架构的应用软件，在 B/S 架构中，浏览器与服务器�
 
 #### 2.1.2. 响应报文
 
-![](D:\GitHub\Web\img\响应报文.png)
+![](https://github.com/BuKaixiu/Web/blob/master/img/响应报文.png)
 
 状态行
 
